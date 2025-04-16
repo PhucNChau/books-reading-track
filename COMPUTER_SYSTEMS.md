@@ -26,7 +26,7 @@ Chap | Title | Link
 [Back to contents](/COMPUTER_SYSTEMS.md#contents)
 
 ### 5.1
-Invoking _GCC_ with the command line flag '-01' will cause it to apply a basic set of optimizations. Flag '-02' or '-03' applies more extensive application. But we only apply flag '-01' to optimize C program by code.
+Invoking _GCC_ with the command line flag '-O1' will cause it to apply a basic set of optimizations. Flag '-O2' or '-O3' applies more extensive application. But we only apply flag '-O1' to optimize C program by code.
 
 _Optimization blockers_: aspects of programs that can severely limit the opportunities for a compiler to generate optimized code. There are two blockers:
 * memory aliasing: The case where two pointers may designate the same memory location
