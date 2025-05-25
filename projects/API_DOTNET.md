@@ -1,0 +1,62 @@
+# Notes for Developing .NET API Projects
+[Back](../README.md)
+
+## Technology Stacks
+Tech | Purpose | Link
+---- | ---- | ----
+PostgreSQL | Relational database management system | None
+pgAdmin | GUI for managing PostgreSQL DB | None
+Npgsql. EntityFrameworkCore. PostgreSQL | EF Core provider for PostgreSQL | None
+AutoMapper | Object-object mapping | None
+
+
+
+
+
+
+## Steps
+1. Draw UML Class Diagram
+
+2. Create tables in PostgreSQL
+
+3. Create a .NET API codebase solution
+
+4. Create entities corresponding to tables in DB
+
+5. Create a DbContext class
+    - __Example:__
+    ```cs
+    public class AppDbContext : DbContext
+    {
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
+
+        public DbSet<Book> Books { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Book>().ToTable("books");
+            modelBuilder.Entity<Book>().HasKey(b => b.Id);
+            modelBuilder.Entity<Book>().Property(b => b.Title).HasColumnName("title");
+            modelBuilder.Entity<Book>().Property(b => b.Author).HasColumnName("author");
+            modelBuilder.Entity<Book>().Property(b => b.PublishedDate).HasColumnName("published_date");
+        }
+    }
+    ```
+6. Install Nuget package Npgsql.EntityFrameworkCore.PostgreSQL
+
+7. Register the DbContext class
+    - Add connection string in __appsettings.json__
+    ```json
+    "ConnectionStrings": {
+        "DefaultConnection": "Host=localhost;Port=123;Database=your_db;Username=postgres;Password=1234"
+    }
+    ```
+    - Add dbcontext in __Program.cs__
+    ```cs
+    builder.Services.AddDbContext<AppDbContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+    ```
+
+
+8.  Create Controllers
+    - Web API controllers should typically derive from ControllerBase rather from Controller. Controller derives from ControllerBase and adds support for views, so it's for handling web pages, not web API requests.
+    - The `[ApiController]` attribute makes model validation errors automatically trigger an HTTP 400 response. [View more](https://learn.microsoft.com/en-us/aspnet/core/web-api/?view=aspnetcore-9.0#automatic-http-400-responses)
