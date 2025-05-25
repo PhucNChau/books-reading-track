@@ -11,6 +11,11 @@ flowchart LR;
         B-->C[Service Layer];
         C-->D[Route Layer];
     end
-
-
+    subgraph Frontend
+        direction LR
+        E[Backend for Frontend (SSR/SSG)]<--|req|F[React Frontend];
+        F-->|res|E;
+    end
+    Frontend-->|req|Backend
+    Backend-->|res|Frontend
 ```
