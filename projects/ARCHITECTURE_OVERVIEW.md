@@ -17,3 +17,4 @@ flowchart LR;
     end
     Backend<-->|res/req|Frontend;
 ```
+Fig 3.1 - A modern full-stack architecture, with a single backend service and a frontend with server-side rendering (SSR) and static-site generation (SSG) - `[Modern Full-Stack React Projects by Daniel Bugl]`
