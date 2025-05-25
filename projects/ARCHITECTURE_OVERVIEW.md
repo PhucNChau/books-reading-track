@@ -13,7 +13,7 @@ flowchart LR;
     end
     subgraph Frontend
         direction LR
-        E[Backend for Frontend (SSR/SSG)]<--|req|F[React Frontend];
+        E["Backend for Frontend (SSR/SSG)"]<--|req|F[React Frontend];
         F-->|res|E;
     end
     Frontend-->|req|Backend
