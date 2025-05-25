@@ -5,8 +5,12 @@
 Architecture for developing a full-stack project.
 
 ```mermaid
-flowchart TD;
-    A@{ shape: cyl, label: "Database" }-->B;
+flowchart LR;
+    A@{ shape: cyl, label: "Database" }-->B[Data Layer];
+    subgraph Backend
+        B-->C[Service Layer];
+        C-->D[Route Layer];
+    end
 
 
 ```
