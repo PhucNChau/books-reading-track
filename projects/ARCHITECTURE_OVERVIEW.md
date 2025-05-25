@@ -4,6 +4,11 @@
 ## Overview
 Architecture for developing a full-stack project.
 
+## Technology Stacks
+Tech | Purpose | Link
+---- | ---- | ----
+Mermaid | Draw graph in GitHub | [E-Link](https://mermaid.js.org/syntax/flowchart.html)
+
 ```mermaid
 flowchart LR;
     A@{ shape: cyl, label: "Database" }-->B[Data Layer];
