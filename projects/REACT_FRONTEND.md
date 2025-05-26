@@ -14,10 +14,14 @@ Axios Package | Handle http requests | [E-Link](https://axios-http.com/docs/intr
 
 
 ## Steps to create a React Frontend project
-1. 
-
-
-
+1. `npm create vite@latest`
+2. `npm install`
+3. `npm run dev`
 
 ## Steps to create a Backend for Frontend project
-1. 
+1. Create a folder
+2. cd to the new folder
+3. `npm init -y`
+4. `npm install express` to install express package
+5. Create `src` folder
+6. Create file `server.js`
