@@ -57,9 +57,23 @@ AutoMapper | Object-object mapping | None
     builder.Services.AddDbContext<AppDbContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
     ```
 
-8. Add a Repository Layer
+8. Add a Generic Repository Layer
+    - View more [generic repository and unit of work](https://learn.microsoft.com/en-us/aspnet/mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/implementing-the-repository-and-unit-of-work-patterns-in-an-asp-net-mvc-application)
+    - Should create both interface and its implementation class
+    - Should use this generic get all method
+    ```cs
+    public virtual IEnumerable<TEntity> Get(
+    Expression<Func<TEntity, bool>> filter = null,
+    Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
+    string includeProperties = "")
+    ```
+    - The code `Expression<Func<TEntity, bool>> filter` means the caller will provide a lambda expression based on the TEntity type, and this expression will return a Boolean value. For example, `student => student.LastName == "Smith"`
+    - The code `Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy` also means the caller will provide a lambda expression. For example, `q => q.OrderBy(s => s.LastName)`
 
-9. Add a Service Layer
+9. Add Unit of Work Interface and Implementation
+    - All repositories of entities will be stored here.
+    
+10. Add a Service Layer
     - Check `DbUpdateConcurrencyException` when using `UPDATE` or `DELETE` methods in repository layer - [view more](https://learn.microsoft.com/en-us/ef/core/saving/concurrency?tabs=data-annotations)
     - Should use `uuid` data type to add an attribute for checking the error.
     - Code example
@@ -76,6 +90,6 @@ AutoMapper | Object-object mapping | None
     - One advantage of manually managing the concurrency token is that you can control precisely when it gets regenerated, to avoid needless concurrency conflicts. --> `Should NOT create auto-generated uuid for the tracking column in DB`.
 
 
-10. Create Controllers
+11. Create Controllers
     - Web API controllers should typically derive from ControllerBase rather from Controller. Controller derives from ControllerBase and adds support for views, so it's for handling web pages, not web API requests.
     - The `[ApiController]` attribute makes model validation errors automatically trigger an HTTP 400 response. [View more](https://learn.microsoft.com/en-us/aspnet/core/web-api/?view=aspnetcore-9.0#automatic-http-400-responses)
