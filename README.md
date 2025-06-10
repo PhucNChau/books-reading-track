@@ -2,7 +2,8 @@
 History and notes from reading books
 
 ## List of books
-- [Bryant, Randal E., and David R. O’Hallaron. Computer Systems: A Programmer’s Perspective. Prentice Hall, 2011.](./COMPUTER_SYSTEMS.md) 
+- [Bryant, Randal E., and David R. O’Hallaron. Computer Systems: A Programmer’s Perspective. Prentice Hall, 2011.](/books/COMPUTER_SYSTEMS.md)
+- [Géron, Aurélien. Hands-On Machine Learning with Scikit-Learn and TensorFlow: Concepts, Tools, and Techniques to Build Intelligent Systems. 2017, cds.cern.ch/record/2699693.](/books/HANDS-ON_MACHINE_LEARNING.md)
 
 
 ## Projects' Note

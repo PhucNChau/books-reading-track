@@ -1,5 +1,5 @@
 # Computer Systems: A Programmer’s Perspective
-[Back](/README.md)
+[Back](../README.md)
 
 __Keywords about the book__
 - C programming language
@@ -23,8 +23,8 @@ Chap | Title | Link
 
 ## Chapter 5
 <!-- Change page number after reading to update -->
-[read-5]: /COMPUTER_SYSTEMS.md#chapter-5 "480"
-[Back to contents](/COMPUTER_SYSTEMS.md#contents)
+[read-5]: COMPUTER_SYSTEMS.md#chapter-5 "480"
+[Back to contents](COMPUTER_SYSTEMS.md#contents)
 
 ### 5.1
 Invoking _GCC_ with the command line flag '-O1' will cause it to apply a basic set of optimizations. Flag '-O2' or '-O3' applies more extensive application. But we only apply flag '-O1' to optimize C program by code.
@@ -39,8 +39,8 @@ The metric _cycles per element_, abbreviated “CPE,” is a way to express prog
 
 ## Chapter 6
 <!-- Change page number after reading to update -->
-[read-6]: /COMPUTER_SYSTEMS.md#chapter-6 "596"
-[Back to contents](/COMPUTER_SYSTEMS.md#contents)
+[read-6]: COMPUTER_SYSTEMS.md#chapter-6 "596"
+[Back to contents](COMPUTER_SYSTEMS.md#contents)
 
 ### 6.1 Locality
 Well-written computer programs -> exhibit good _locality_. That is:
