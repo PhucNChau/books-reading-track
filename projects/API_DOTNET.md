@@ -72,8 +72,44 @@ AutoMapper | Object-object mapping | None
 
 9. Add Unit of Work Interface and Implementation
     - All repositories of entities will be stored here.
-    
-10. Add a Service Layer
+
+10. Add DTOs classes for corresponding entity
+    - Naming: Entity`Dto` for general purposes like receiving or updating entity.
+    ```json
+    {
+        "href": "https://localhost:7222/api/areas/22e54b03-4b75-43c8-b6cb-e878361286aa",
+        "key": "22e54b03-4b75-43c8-b6cb-e878361286aa",
+        "name": "Test Container editing",
+        "containerLevel": 1,
+        "description": "This is a test container editing",
+        "areaId": "e254843d-dda2-4061-989f-1c077230d0ea"
+    }
+    ```
+    - Entity`CreateDto` for creating a new entity.
+
+11. Add mapping profile using [automapper](https://automapper.org/)
+    - Create `MappingProfile.cs`
+    ```cs
+    public class MappingProfile : Profile
+    {
+        public MappingProfile()
+        {
+            // Area entity
+            CreateMap<Area, AreaDto>()
+                .ForMember(d => d.Key, opt => opt.MapFrom(src => src.AreaId))
+                .ForMember(d => d.Href, opt => opt.Ignore())
+                .ReverseMap()
+                .ForMember(d => d.CreatedDate, opt => opt.Ignore())
+                .ForMember(d => d.UpdatedDate, opt => opt.Ignore());
+
+            CreateMap<AreaCreateDto, Area>();
+        }
+    }
+    ```
+    - Register in `Program.cs`
+    `builder.Services.AddAutoMapper(typeof(MappingProfile));`
+
+12. Add a Service Layer
     - Check `DbUpdateConcurrencyException` when using `UPDATE` or `DELETE` methods in repository layer - [view more](https://learn.microsoft.com/en-us/ef/core/saving/concurrency?tabs=data-annotations)
     - Should use `uuid` data type to add an attribute for checking the error.
     - Code example
@@ -89,7 +125,9 @@ AutoMapper | Object-object mapping | None
     ```
     - One advantage of manually managing the concurrency token is that you can control precisely when it gets regenerated, to avoid needless concurrency conflicts. --> `Should NOT create auto-generated uuid for the tracking column in DB`.
 
+13. Register all DI in `Program.cs`
+    - `builder.Services.AddScoped<IAreaService, AreaService>();`
 
-11. Create Controllers
+14. Create Controllers
     - Web API controllers should typically derive from ControllerBase rather from Controller. Controller derives from ControllerBase and adds support for views, so it's for handling web pages, not web API requests.
     - The `[ApiController]` attribute makes model validation errors automatically trigger an HTTP 400 response. [View more](https://learn.microsoft.com/en-us/aspnet/core/web-api/?view=aspnetcore-9.0#automatic-http-400-responses)
