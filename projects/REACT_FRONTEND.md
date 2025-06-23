@@ -13,6 +13,7 @@ React Framework | Frontend framework | None
 Axios Package | Handle http requests | [E-Link](https://axios-http.com/docs/intro)
 Selectors | Abstract of the structure of the state | [E-link](https://redux.js.org/usage/deriving-data-selectors)
 React router | Manage route | [E-link](https://reactrouter.com/start/data/installation)
+Daisy UI | Frontend library | [E-link]()
 
 
 ## Steps to create a React Frontend project
@@ -35,6 +36,10 @@ React router | Manage route | [E-link](https://reactrouter.com/start/data/instal
 - Selector
     - `useSelector` in the `react-redux` package
     - `createSelector` in the `@reduxjs/toolkit` package
+    - [View more](https://redux.js.org/usage/deriving-data-selectors)
+- Use combineReducers: `npm install redux` (__old approach__)
+- Use npm package `redux-devtools-extension` for debugging [view more](https://redux.js.org/tutorials/fundamentals/part-4-store#adding-the-devtools-to-the-store) (__old approach__)
+- You can only write "mutating" logic in Redux Toolkit's createSlice and createReducer because they use Immer inside! If you write mutating logic in reducers without Immer, it will mutate the state and cause bugs!
 
 ## Add Axios to project
 - `npm install axios`
@@ -113,4 +118,24 @@ React router | Manage route | [E-link](https://reactrouter.com/start/data/instal
 
 2. Add `react-router` package, create page components and app routes
 
-3. 
+3. Add Tailwind CSS
+    - `npm install tailwindcss @tailwindcss/vite`
+    - Add `@import "tailwindcss";` in the main .css file
+    - Edit `vite.config.js`
+        ```
+        import { defineConfig } from 'vite';
+        import react from '@vitejs/plugin-react';
+        import tailwindcss from '@tailwindcss/vite';
+
+        // https://vite.dev/config/
+        export default defineConfig({
+        plugins: [
+            react(),
+            tailwindcss()
+        ],
+        });
+        ```
+
+4. Add Daisy UI
+    - `npm install daisyui@latest`
+    - Add `@plugin "daisyui";` to the main .css file
