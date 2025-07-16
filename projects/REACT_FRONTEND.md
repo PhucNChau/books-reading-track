@@ -14,6 +14,7 @@ Axios Package | Handle http requests | [E-Link](https://axios-http.com/docs/intr
 Selectors | Abstract of the structure of the state | [E-link](https://redux.js.org/usage/deriving-data-selectors)
 React router | Manage route | [E-link](https://reactrouter.com/start/data/installation)
 Daisy UI | Frontend library | [E-link]()
+TANSTACK TABLE | Frontend lib for tables and datagrids | [E-link](https://tanstack.com/table/latest)
 
 
 ## Steps to create a React Frontend project
@@ -46,6 +47,9 @@ Daisy UI | Frontend library | [E-link]()
 
 ## Add React router to project
 - `npm i react-router`
+
+## Add TANSTACK TABLE to project
+- `npm install @tanstack/react-table`
 
 ## Steps to work with a new react project
 1. Create folder structure
